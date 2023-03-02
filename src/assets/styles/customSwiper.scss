@@ -1,0 +1,112 @@
+.custom-navs {
+  height: 48px;
+}
+
+
+.swiper-button-next,
+.swiper-button-prev {
+  &::after {
+    display: none !important;
+  }
+  top: auto;
+  bottom: 1px;
+  left: 0;
+  right: auto;
+  width: 32px;
+  height: 32px;
+  svg {
+    g > path,
+    g > circle {
+      stroke: $mainPurple;
+      @include linkTransition(stroke);
+    }
+    defs > clipPath > rect {
+      fill: transparent;
+      @include linkTransition(fill);
+    }
+  }
+  &:focus,
+  &:focus-visible {
+    @include strokeInBtnChange($mainBGC, $mainPurple, $purpleHover);
+  }
+  &:active {
+    @include strokeInBtnChange($mainBGC, $purpleShade, $purpleShade);
+  }
+}
+.swiper-button-disabled {
+  opacity: 1 !important;
+  @include strokeInBtnChange($hTopGrayText, $hTopGrayText, transparent);
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:active {
+    @include strokeInBtnChange($hTopGrayText, $hTopGrayText, transparent);
+  }
+}
+
+.swiper-button-prev {
+  // left: calc(50% - 38px);
+  left: calc(50% - 39px);
+}
+.swiper-button-next {
+  // left: calc(50% + 9px);
+  left: calc(50% + 6px);
+}
+
+// .custom-prev {
+
+// }
+
+// .custom-next {
+
+// }
+
+
+
+@media(min-width: $media768) {
+  .custom-navs {
+    display: none;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    @include positionAuto(absolute);
+    top: 25px;
+  }
+  .swiper-button-prev {
+    right: 45px;
+  }
+  .swiper-button-next {
+    right: 0;
+  }
+}
+
+@media(min-width: $media1024) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    &:hover {
+      @include strokeInBtnChange($mainBGC, $mainPurple, $mainPurple);
+    }
+    &:active {
+      @include strokeInBtnChange($mainBGC, $purpleShade, $purpleShade);
+    }
+  }
+}
+
+@media(min-width: $mediaDescTop) {
+  .slide {
+    width: calc((296 + 32) / 1280 * 100% - 32px) !important;
+    &_desctop-big {
+      width: calc((624 + 32) / 1280 * 100% - 32px) !important;
+    }
+  }
+  .swiper-button-disabled {
+    opacity: 1 !important;
+    @include strokeInBtnChange($hTopGrayText, $hTopGrayText, transparent);
+    &:hover,
+    &:focus,
+    &:focus-visible,
+    &:active {
+      @include strokeInBtnChange($hTopGrayText, $hTopGrayText, transparent);
+    }
+  }
+}

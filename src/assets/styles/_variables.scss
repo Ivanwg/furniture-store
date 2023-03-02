@@ -1,0 +1,61 @@
+$containerMaxWidth: 1310px;
+
+$containerPadding320: 12px;
+$containerPadding768: 72px;
+$containerPadding1024: 36px;
+
+
+$containerPadding: 15px;
+
+
+$mainBGC: #FFF;
+
+$errColor: #FF6972;
+$successGreen: #B8EC64;
+
+$hTopGrayText: #999;
+$mainGrayText: #666;
+$grayHover: #EAEAEA;
+$greyLight: #F7F7F7;
+$borderGray: #F6F6F6;
+
+$mainBlack: #333;
+
+$mainOrange: #FF862F;
+$orangeHover: #FFBD59;
+$orangeShade: #BB370E;
+$bgcOrange: #FFF5D1;
+$oxford: #D5B986;
+
+
+$mainPurple: #A65CF0;
+$purpleHover: #C998FB;
+$purpleShade: #7033AC;
+$bgcPurple: #EBD1FF;
+$inputBgcHover: #F8EFFF;
+
+$mainFontFamily: 'Open Sans';
+$secondFontFamily: 'Playfair Display';
+
+$headerInputHeight: 60px;
+
+
+$media320: 320px;
+$media768: 768px;
+$media1024: 1024px;
+$mediaDescTop: 1281px;
+
+
+
+
+// @media(min-width: $media768) {
+//   $containerPadding: $containerPadding768;
+// }
+
+// @media(min-width: $media1024) {
+//   $containerPadding: $containerPadding1024;
+// }
+
+// @media(min-width: $mediaDescTop) {
+//   $containerPadding: 15px;
+// }

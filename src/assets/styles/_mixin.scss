@@ -1,0 +1,420 @@
+@import '_variables.scss';
+
+
+@mixin fontProperties($size, $color, $lineHeight: 1, $fontWeight: 400, $fontName: $mainFontFamily) {
+  font-family: $fontName;
+  font-weight: $fontWeight;
+  font-size: $size;
+  font-style: normal;
+  color: $color;
+  line-height: $lineHeight;
+}
+
+@mixin playFairFont($size, $color, $lineHeight) {
+  font-family: $secondFontFamily;
+  font-weight: 700;
+  font-size: $size;
+  font-style: normal;
+  color: $color;
+  line-height: $lineHeight;
+}
+
+@mixin linkTransition($property, $time: .2s) {
+  transition: $property $time ease;
+}
+
+@mixin TextBgcTransition {
+  transition-property: background-color, color;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+}
+
+@mixin InputTransition {
+  transition-property: background-color, color, border-color;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+}
+
+@mixin bgcBorderTransition {
+  transition-property: background-color, border;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+}
+
+@mixin bgcOutlineTransition {
+  transition-property: background-color, outline;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+}
+
+@mixin fillBgcTransition {
+  transition-property: background-color, fill;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+}
+
+
+@mixin inputHover($border, $bgc) {
+  &:hover {
+    border-color: $border;
+    background-color: $bgc;
+  }
+}
+
+@mixin bgcSvgHover($bgc, $fill) {
+  &:hover {
+    svg path {
+      fill: $fill;
+    }
+    span {
+      background-color: $bgc;
+    }
+  }
+}
+
+@mixin innerSvgHover($fill) {
+  &:hover {
+    svg path {
+      fill: $fill;
+    }
+  }
+}
+
+@mixin textIconHover($color) {
+  &:hover {
+    svg path {
+      fill: $color;
+    }
+    p {
+      color: $color;
+    }
+    color: $color;
+  }
+}
+
+@mixin textHover($color) {
+  &:hover {
+    color: $color;
+  }
+}
+
+@mixin borderColorHover($color) {
+  &:hover {
+    border-color: $color;
+  }
+}
+
+@mixin bgcHover($bgc) {
+  &:hover {
+    background-color: $bgc;
+  }
+}
+
+@mixin borderBgcColorTextHover($bgc, $borderColor, $textColor) {
+  &:hover{
+    color: $textColor;
+    border-color: $borderColor;
+    background-color: $bgc;
+  }
+}
+
+@mixin bgcColorTextHover($bgc, $textColor) {
+  &:hover{
+    color: $textColor;
+    background-color: $bgc;
+  }
+}
+
+@mixin bgcOutlineFocus($bgc, $borderColor, $borderWidth: 1px) {
+  &:focus {
+    background-color: $bgc;
+    outline: $borderWidth solid $borderColor;
+  }
+}
+
+@mixin textIconFocus($bgc, $color) {
+  &:focus,
+  &:focus-visible {
+    background-color: $bgc;
+    svg path {
+      fill: $color;
+    }
+    p {
+      color: $color;
+    }
+  }
+}
+
+@mixin strokeInBtnChange($strokePath, $strokeCircle, $fill) {
+  svg {
+    g > path {
+      stroke: $strokePath;
+    }
+    g > circle {
+      fill: $fill;
+      stroke: $strokeCircle;
+    }
+  }
+}
+
+@mixin socialLink($bgc, $fill) {
+  background-color: $bgc;
+  svg {
+    g > path {
+      fill: $fill;
+    }
+    path{
+      fill: $fill;
+      fill: $fill;
+    }
+  }
+}
+
+@mixin close($bgc, $fill) {
+  &:focus,
+  &:focus-visible {
+    background-color: $bgc;
+    svg {
+      path{
+        fill: $fill;
+        fill: $fill;
+      }
+    }
+  }
+}
+
+@mixin catalogChange($strokePath, $strokeCircle, $fill) {
+  svg {
+    g > path {
+      stroke: $strokePath;
+    }
+    g > circle {
+      fill: $fill;
+      stroke: $strokeCircle;
+    }
+  }
+  span {
+    border-color: $strokeCircle;
+    color: $strokeCircle;
+  }
+
+}
+
+@mixin backgroundFocus($bgcColor, $color) {
+  &:focus {
+    background-color: $bgcColor;
+    color: $color;
+    p {
+      color: $color;
+    }
+  }
+}
+
+@mixin textBgcFocus($color, $bgc) {
+  &:focus,
+  &:focus-visible {
+    color: $color;
+    background-color: $bgc;
+  }
+}
+
+@mixin textFocus($color) {
+  &:focus,
+  &:focus-visible {
+    color: $color;
+  }
+}
+
+@mixin bgcChangeOtherInitialFocus($bgcColor, $color) {
+  &:focus {
+    background-color: $bgcColor;
+    color: $color;
+    p {
+      color: $color;
+    }
+    svg path {
+      fill: $color;
+    }
+  }
+}
+
+@mixin backgroundInnerSvgFocus($bgcColor, $fill) {
+  &:focus {
+    background-color: $bgcColor;
+    color: $fill;
+    svg path {
+      fill: $fill;
+    }
+  }
+}
+
+@mixin inputBgcBorderFocus($bgc, $border) {
+  &:focus,
+  &:focus-visible {
+    background-color: $bgc;
+    border-color: $border;
+  }
+}
+
+@mixin inputBgcBorderFocusWinhZIndex($bgc, $border, $z: 4) {
+  &:focus,
+  &:focus-visible {
+    @include positionZero(relative);
+    background-color: $bgc;
+    border-color: $border;
+    z-index: $z;
+  }
+
+}
+
+@mixin onlyBgcFocus($color) {
+  &:focus,
+  &:focus-visible {
+    background-color: $color;
+  }
+}
+
+// @mixin inputWithSvgActive($bgc, $border, $fill) {
+//   &:active {
+//     background-color: $bgc;
+//     border-color: $border;
+//     svg path {
+//       fill: $fill;
+//     }
+//   }
+// }
+
+
+@mixin textActive($color) {
+  &:active{
+    background-color: transparent;
+    color: $color;
+  }
+}
+
+@mixin onlyBgcActive($color) {
+  &:active{
+    background-color: $color;
+  }
+}
+
+@mixin textIconActive($color) {
+  &:active {
+    background-color: transparent;
+    svg path {
+      fill: $color;
+    }
+    p {
+      color: $color;
+    }
+  }
+}
+
+@mixin InnerSvgActive($fill) {
+  &:active {
+    background-color: transparent;
+    svg path {
+      fill: $fill;
+    }
+  }
+}
+
+@mixin borderColorActive($color) {
+  &:active{
+    border-color: $color;
+  }
+}
+
+@mixin borderBgcColorActive($bgc, $color) {
+  &:active{
+    border-color: $color;
+    background-color: $bgc;
+  }
+}
+
+@mixin borderBgcColorTextActive($bgc, $borderColor, $textColor) {
+  &:active{
+    color: $textColor;
+    border-color: $borderColor !important;
+    background-color: $bgc;
+  }
+}
+
+@mixin btnWithBorderTextActive($bgc, $borderColor, $textColor) {
+  &:active{
+    color: $textColor;
+    border: 2px solid $borderColor;
+    background-color: $bgc;
+  }
+}
+
+@mixin bgcWithoutOutlineActive($bgc) {
+  &:active{
+    outline: none;
+    background-color: $bgc;
+  }
+}
+
+@mixin positionZero($position: absolute) {
+  position: $position;
+  content: '';
+  top: 0;
+  left: 0;
+}
+
+@mixin positionAuto($position) {
+  position: $position;
+  content: '';
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+}
+
+@mixin positionTopLeft($top, $left, $position: absolute) {
+  position: $position;
+  content: '';
+  top: $top;
+  left: $left;
+}
+
+@mixin positionTopRight($top, $right, $position: absolute) {
+  position: $position;
+  content: '';
+  top: $top;
+  right: $right;
+}
+
+@mixin headerInputsBorder($px: 2px) {
+  border: $px solid $borderGray;
+}
+
+@mixin stopCursor {
+  pointer-events: none;
+}
+
+@mixin commonCard {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: $greyLight;
+}
+
+
+@mixin itemMBottom12 {
+  &:not(:last-child) {
+    margin-bottom: $halfSpace;
+  }
+}
+
+@mixin visual-hide {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+

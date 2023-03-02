@@ -1,0 +1,50 @@
+@import '_mixin.scss';
+@import '_variables.scss';
+
+.tippy-box[data-theme~="custom"] {
+  padding: 5px;
+  border: none;
+  border-radius: 0;
+  @include fontProperties(9px, $mainBGC, 14px);
+  text-align: center;
+}
+
+.button-disabled {
+  border-color: $grayHover;
+  color: $mainGrayText;
+  background-color: $grayHover;
+  cursor: auto;
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:active {
+    border-color: $grayHover;
+    outline: none;
+    color: $mainGrayText;
+    background-color: $grayHover;
+    cursor: auto;
+  }
+}
+
+.in-search-svg {
+  path {
+    fill: $mainPurple;
+  }
+}
+
+.bgc-transparent {
+  background-color: transparent !important;
+}
+
+.not-border-color {
+  border-color: red !important;
+}
+
+.disabled {
+  display: none !important;
+}
+
+.visually-hidden {
+  @include visual-hide;
+}
+

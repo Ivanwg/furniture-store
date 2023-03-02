@@ -1,0 +1,1533 @@
+@import '_mixin.scss';
+@import '_variables.scss';
+@import 'common.scss';
+
+
+.route {
+  $leftPadding: 2px;
+  &__link {
+    margin-top: -1px;
+    margin-left: -$leftPadding;
+    padding: 1px $leftPadding;
+    &_active {
+      margin-top: -1px;
+      margin-left: -$leftPadding;
+      padding: 1px $leftPadding;
+      color: $purpleShade;
+    }
+  }
+  &__slash {
+    padding: 0 3px 0 (6 - $leftPadding);
+    @include fontProperties(14px, $hTopGrayText);
+  }
+}
+
+.header {
+  background-color: $mainBGC;
+  padding-bottom: 32px;
+  .h-top {
+    min-height: 30px;
+    &__mobile-logo-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 12px 0 5px;
+      background-color: $greyLight;
+    }
+    &__content {
+      display: flex;
+      align-items: center;
+      // padding: 15px 0;
+      padding: 18px 0 15px;
+    }
+    &__item {
+      // display: flex;
+      // align-items: center;
+      // &:not(:last-child) {
+      //   margin-right: 15px;
+      // }
+      &_left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+      }
+      &_right {
+        // justify-content: flex-end;
+        // flex-basis: 55%;
+        display: none;
+      }
+      .region {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        margin-bottom: 20px;
+        &__item {
+          @include fontProperties(16px, $mainBlack, 19px);
+          &:not(:last-child) {
+            // margin-right: 4px;
+            margin-right: 2px;
+          }
+          &_value {
+            @include positionZero(relative);
+            display: flex;
+            align-items: center;
+            min-width: 81px;
+            .region-switch {
+              display: flex;
+              align-items: center;
+              padding: 2px 3px;
+              .city {
+                margin-right: 5px;
+                @include fontProperties(16px, $mainPurple, 19px);
+                @include linkTransition(color);
+              }
+              .city-open-icon {
+                transform: translateY(1px);
+                svg {
+                  display: block;
+                  path {
+                    fill: $mainPurple;
+                    @include linkTransition(fill);
+                  }
+                }
+              }
+              @include backgroundFocus($bgcPurple, $purpleShade);
+              @include textIconActive($purpleShade);
+            }
+            .regions {
+              @include positionZero(absolute);
+              z-index: 10;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              align-content: flex-start;
+              margin-top: 27px;
+              padding: 16px 13px 19px;
+              min-width: 84px;
+              width: 100%;
+              border: 2px solid $borderGray;
+              background-color: $mainBGC;
+              &__item {
+                display: flex;
+                justify-content: flex-start;
+                &:not(:last-child) {
+                  margin-bottom: 11px
+                }
+              }
+              &__btn {
+                padding: 0 3px;
+                @include fontProperties(14px, $mainBlack, 18px);
+                cursor: pointer;
+                @include TextBgcTransition;
+                @include textBgcFocus($purpleShade, $bgcPurple);
+                @include textActive($mainGrayText);
+              }
+            }
+          }
+        }
+      }
+      .tel {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        margin-top: -6px;
+        padding: 3px;
+        &__item {
+          @include fontProperties(14px, $mainOrange, 1);
+          &_icon {
+            // margin-right: 3px;
+            margin-right: 1px;
+            svg {
+              display: block;
+              path {
+                fill: $mainOrange;
+                @include linkTransition(fill);
+              }
+            }
+          }
+          &_numbs {
+            @include linkTransition(color);
+          }
+        }
+        // @include textIconHover($orangeHover);
+        @include bgcChangeOtherInitialFocus($bgcOrange, $mainOrange);
+        @include textIconActive($orangeShade);
+      }
+      .profile-basket-btns {
+        display: none;
+      }
+    }
+  }
+  .h-main {
+    // padding: 32px 0;
+    &__item {
+      display: flex;
+      flex-direction: column;
+      &_top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: -$containerPadding320;
+        margin-right: -$containerPadding320;
+        // padding: 12px $containerPadding320;
+        padding: 6px $containerPadding320;
+        width: calc(100% + $containerPadding320 * 2);
+        border-top: 1px solid $greyLight;
+        border-bottom: 1px solid $greyLight;
+      }
+      &_bottom {
+        padding: 16px 0 0;
+        display: flex;
+        // flex-direction: row;
+        // align-items: center;
+        // align-content: stretch;
+        flex-direction: column;
+      }
+    }
+    .logo-link {
+      display: none;
+    }
+    &__logo {
+      // height: 27px;
+      // max-width: 187px;
+      // margin-right: 15px
+      // display: none;
+    }
+    &__nav {
+      // flex-basis: 70%;
+    }
+    .main-nav {
+      @include positionZero(relative);
+      overflow: visible;
+      &__burger {
+        @include positionZero(relative);
+        // padding: 2px;
+        padding: 4px;
+        svg > rect,
+        svg > g > rect {
+          fill: $mainPurple;
+          @include linkTransition(fill);
+        }
+        &_close {
+          @include positionZero(absolute);
+          left: 0;
+          z-index: 21;
+        }
+        @include linkTransition(background-color);
+        &:focus,
+        &:focus-visible {
+          background-color: transparent;
+          svg > rect,
+          svg > g > rect {
+            fill: $purpleShade;
+          }
+        }
+        &:active{
+          background-color: $bgcPurple;
+        }
+      }
+      &__list {
+        @include positionZero(absolute);
+        top: -15px;
+        z-index: 20;
+        display: none;
+        opacity: 0;
+        margin-left: -$containerPadding320;
+        padding: 62px $containerPadding320;
+        min-width: 320px;
+        width: 100vw;
+        min-height: 100vh;
+        border: 1px solid $borderGray;
+        background-color: $mainBGC;
+        transform: translateX(-100%);
+      }
+      &__item {
+        &:not(:last-child) {
+          margin-bottom: 41px;
+        }
+      }
+      &__768-elephant {
+        display: none;
+      }
+      &__link {
+        &:not(:first-child) {
+          margin-left: -10px;
+        }
+        margin-top: -2px;
+        padding: 2px 10px;
+        white-space: nowrap;
+        @include fontProperties(16px, $mainBlack, 22px);
+        @include linkTransition(color);
+        // @include textHover($mainPurple);
+        @include backgroundFocus($bgcPurple, $mainBlack);
+        @include textActive($purpleShade);
+      }
+    }
+    .profile-basket-btns {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .search-good {
+      @include positionZero(relative);
+      height: $headerInputHeight;
+      // flex-basis: 60%;
+      &__input {
+        // padding: 20px 70px 20px 59px;
+          padding: 24px 70px 20px 57px;
+        width: 100%;
+        height: 100%;
+        // @include headerInputsBorder;
+        // border-radius: 10px;
+        // @include fontProperties(16px, $hTopGrayText, 19px);
+        // background-color: $borderGray;
+        // @include InputTransition;
+        // // @include inputHover($grayHover, $grayHover);
+        // @include inputBgcBorderFocusWinhZIndex($inputBgcHover, $mainPurple);
+        // &_keypress {
+        //   background-color: $borderGray;
+        //   border-color: $borderGray;
+        //   svg path {
+        //     fill: $mainPurple !important;
+        //   }
+        // }
+        // @include inputWithSvgActive($borderGray, $borderGray, $mainPurple);
+      }
+      &__not-submit {
+        @include positionTopRight(15px, 32px);
+        z-index: 12;
+        // @include stopCursor;
+        svg {
+          g > path,
+          g > circle {
+            stroke: $mainPurple;
+            @include linkTransition(stroke);
+          }
+          defs > clipPath > rect {
+            fill: transparent;
+            @include linkTransition(fill);
+          }
+        }
+        &:focus,
+        &:focus-visible {
+          @include strokeInBtnChange($mainBGC, $mainPurple, $purpleHover);
+        }
+        &:active {
+          @include strokeInBtnChange($mainBGC, $purpleShade, $purpleShade);
+        }
+      }
+      &__icon {
+        @include positionTopLeft(23px, 34px);
+        z-index: 5;
+        @include stopCursor;
+      }
+    }
+    .select-category {
+      @include positionZero(relative);
+      // flex-basis: 24%;
+      // height: $headerInputHeight;
+      // flex-basis: 24%;
+      // padding: 19px 32px;
+      // @include headerInputsBorder;
+      // border-radius: 0px 10px 10px 0px;
+      // @include InputTransition;
+      // @include onlyBackgroundHover($grayHover);
+      // @include inputBgcBorderFocus($inputBgcHover, $mainPurple);
+      margin-top: 16px;
+      &__select {
+        @include positionZero(relative);
+        z-index: 10;
+        display: flex;
+        // margin-left: -2px;
+        // padding: 19px 32px;
+        padding: 20px 32px 20px 30px;
+        width: 100%;
+        height: $headerInputHeight;
+        @include headerInputsBorder;
+        border-radius: 10px;
+        @include fontProperties(16px, $mainPurple, 21px);
+        background-color: $mainBGC;
+        .open-icon {
+          @include positionTopRight(27px, 32px);
+          z-index: 3;
+        }
+        @include InputTransition;
+        @include inputBgcBorderFocus($mainBGC, $mainPurple);
+        // @include inputHover($mainPurple, $inputBgcHover);
+        @include borderColorActive($purpleShade);
+        // @include borderBgcColorActive($mainBGC, $purpleShade);
+      }
+      &__list {
+        @include positionTopLeft(50px, 0);
+        z-index: 9;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 1fr;
+        column-gap: 15px;
+        row-gap: 11px;
+        padding: 32px 30px 23px;
+        width: 100%;
+        border: 2px solid $borderGray;
+        border-radius: 0px 0px 10px 10px;
+        background-color: $mainBGC;
+        transform: translateX(-1px);
+      }
+      &__check {
+        padding: 0 5px;
+        @include fontProperties(16px, $mainBlack, 21px);
+        @include TextBgcTransition;
+        // @include textHover($purpleHover);
+        @include textBgcFocus($purpleShade, $bgcPurple);
+        @include textActive($purpleShade);
+      }
+    }
+
+    &__btns {
+      display: none;
+      // display: flex;
+      // justify-content: flex-end;
+      // flex-basis: 16%;
+      // align-self: stretch;
+    }
+  }
+  .h-bottom {
+    display: none;
+  }
+}
+
+.profile-btn {
+  padding: 4px;
+  @include TextBgcTransition;
+  // @include innerSvgHover($purpleHover);
+  @include backgroundInnerSvgFocus($purpleHover, $mainBGC);
+  @include InnerSvgActive($purpleShade)
+}
+.basket-btn {
+  @include positionZero(relative);
+  // margin-left: 32px;
+  margin-left: 24px;
+  margin-right: -4px;
+  padding: 3px 4px 3px 15px;
+  .count {
+    position: absolute;
+    top: 8px;
+    left: 4px;
+    padding: 4px;
+    width: 15px;
+    @include fontProperties(10px, $mainBGC, $fontWeight: 700);
+    background-color: $mainOrange;
+    border-radius: 100px;
+    @include TextBgcTransition;
+  }
+  svg {
+    path {
+      @include linkTransition(fill);
+    }
+  }
+  @include TextBgcTransition;
+  // @include innerSvgHover($purpleHover);
+  @include backgroundInnerSvgFocus($purpleHover, $mainBGC);
+  @include InnerSvgActive($purpleShade)
+}
+
+
+@media(min-width: $media768) {
+  .header {
+    padding-bottom: 0;
+    .h-top {
+      &__mobile-logo-wrap {
+        display: none;
+      }
+      &__content {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+      }
+      &__item {
+        // display: flex;
+        // align-items: center;
+        // &:not(:last-child) {
+        //   margin-right: 15px;
+        // }
+        &_left {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          padding: 18px 0 20px;
+        }
+        &_right {
+          display: flex;
+          align-items: center;
+          margin-right: -$containerPadding768;
+          margin-left: -$containerPadding768;
+          padding: 18px $containerPadding768;
+          width: calc(100% + $containerPadding768 * 2);
+          background-color: $greyLight;
+          // justify-content: flex-end;
+          // flex-basis: 55%;
+          // display: none;
+        }
+        .region {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+          margin: 0 33px 0 0;
+          &__item {
+            @include fontProperties(16px, $mainBlack, 19px);
+            &:not(:last-child) {
+              margin-right: 4px;
+            }
+            &_value {
+              @include positionZero(relative);
+              display: flex;
+              align-items: center;
+              min-width: 81px;
+              .region-switch {
+                display: flex;
+                align-items: center;
+                margin-left: -2px;
+                // padding: 2px 3px;
+                .city {
+                  margin-right: 5px;
+                  @include fontProperties(16px, $mainPurple, 19px);
+                  @include linkTransition(color);
+                }
+                .city-open-icon {
+                  transform: translateY(1px);
+                  svg {
+                    display: block;
+                    path {
+                      fill: $mainPurple;
+                      @include linkTransition(fill);
+                    }
+                  }
+                }
+                // @include backgroundFocus($bgcPurple, $purpleShade);
+                // @include textIconActive($purpleShade);
+              }
+              .regions {
+                @include positionZero(absolute);
+                z-index: 10;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-content: flex-start;
+                margin-top: 27px;
+                padding: 16px 13px 19px;
+                min-width: 84px;
+                width: 100%;
+                border: 2px solid $borderGray;
+                background-color: $mainBGC;
+                &__item {
+                  display: flex;
+                  justify-content: flex-start;
+                  &:not(:last-child) {
+                    margin-bottom: 11px
+                  }
+                }
+                &__btn {
+                  padding: 0 3px;
+                  @include fontProperties(14px, $mainBlack, 18px);
+                  cursor: pointer;
+                  // @include TextBgcTransition;
+                  // @include textBgcFocus($purpleShade, $bgcPurple);
+                  // @include textActive($mainGrayText);
+                }
+              }
+            }
+          }
+        }
+        .tel {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+          margin: -3px -3px 0 0;
+          // padding: 3px;
+          &__item {
+            @include fontProperties(14px, $mainOrange, 1);
+            &_icon {
+              margin-right: 3px;
+              svg {
+                display: block;
+                path {
+                  fill: $mainOrange;
+                  // @include linkTransition(fill);
+                }
+              }
+            }
+            &_numbs {
+              // @include linkTransition(color);
+            }
+          }
+          // @include textIconHover($orangeHover);
+          // @include bgcChangeOtherInitialFocus($bgcOrange, $mainOrange);
+          // @include textIconActive($orangeShade);
+        }
+        .nav-additional {
+          width: 100%;
+          &__list {
+            // display: flex;
+            // align-items: center;
+            // justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            grid-auto-rows: 1fr;
+            column-gap: 15px;
+            row-gap: 10px;
+          }
+          &__item {
+            display: flex;
+            justify-content: center;
+            &:nth-child(4n + 1) {
+              justify-content: flex-start;
+            }
+            &:nth-child(4n + 4) {
+              justify-content: flex-end;
+            }
+            // &:not(:last-child) {
+            //   margin-right: 15px;
+            // }
+          }
+          &__link {
+            // padding: 1px 10px 3px;
+            padding: 1px 10px 3px;
+            text-align: center;
+            white-space: nowrap;
+            &:not(:first-child) {
+              margin-left: -10px;
+            }
+            // @include fontProperties(14px, $hTopGrayText, 1);
+            // @include linkTransition(fill);
+            // @include textHover($mainPurple);
+            // @include backgroundFocus($bgcPurple, $purpleShade);
+            // @include textActive($purpleShade);
+          }
+        }
+      }
+    }
+    .h-main {
+      padding: 32px 0;
+      &__item {
+        // display: flex;
+        // flex-direction: column;
+        &_top {
+          // display: flex;
+          // flex-direction: row;
+          // justify-content: space-between;
+          // align-items: center;
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          border: none;
+        }
+        &_bottom {
+          padding: 32px 0 0;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          align-content: stretch;
+        }
+      }
+      .logo-link {
+        display: block;
+        margin-right: 15px;
+      }
+      &__logo {
+        height: 27px;
+        max-width: 187px;
+      }
+      // &__nav {
+      //   flex-basis: 70%;
+      // }
+      .main-nav {
+        order: -1;
+        &__list {
+          top: -35px;
+          display: grid !important;
+          gap: 41px;
+          grid-template-columns: 1fr 1fr;
+          grid-auto-rows: 1fr;
+          margin-left: -$containerPadding768;
+          padding-left: $containerPadding768;
+          padding-top: 92px;
+          padding-right: 50vw;
+          padding-bottom: 60px;
+          height: auto;
+          min-height: auto;
+        }
+        &__item {
+          &:not(:last-child) {
+            margin: 0;
+          }
+          margin: 0;
+        }
+        &__768-elephant {
+          position: absolute;
+          right: $containerPadding768;
+          bottom: 62px;
+          display: block;
+          // grid-column: 3;
+          // grid-row: 1 / span 3;
+          min-height: 112px;
+          width: 50vw;
+          background-image: url(../img/elephant_big.png);
+          background-repeat: no-repeat;
+          background-size: 161px 112px;
+          background-position: bottom right;
+        }
+        &__link {
+          // padding: 2px 10px;
+          // @include fontProperties(16px, $mainBlack, 22px);
+          // @include linkTransition(color);
+          // @include textHover($mainPurple);
+          // @include backgroundFocus($bgcPurple, $mainBlack);
+          // @include textActive($purpleShade);
+        }
+      }
+
+      .search-good {
+        @include positionZero(relative);
+        height: $headerInputHeight;
+        flex-basis: 70%;
+        &__input {
+          padding: 20px 70px 20px 59px;
+          width: 100%;
+          height: 100%;
+          border-radius: 0;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+          // @include headerInputsBorder;
+          // border-radius: 10px 0px 0px 10px;
+          // @include fontProperties(16px, $hTopGrayText, 19px);
+          // background-color: $borderGray;
+          // @include InputTransition;
+          // @include inputHover($grayHover, $grayHover);
+          // @include inputBgcBorderFocusWinhZIndex($inputBgcHover, $mainPurple);
+          // &_keypress {
+          //   background-color: $borderGray;
+          //   border-color: $borderGray;
+          //   svg path {
+          //     fill: $mainPurple !important;
+          //   }
+          // }
+          // @include inputWithSvgActive($borderGray, $borderGray, $mainPurple);
+        }
+        // &__not-submit {
+        //   @include positionTopRight(14px, 32px);
+        //   z-index: 5;
+        //   @include stopCursor;
+        // }
+        // &__icon {
+        //   @include positionTopLeft(22px, 34px);
+        //   z-index: 5;
+        //   @include stopCursor;
+        // }
+      }
+      .select-category {
+        @include positionZero(relative);
+        flex-basis: 40%;
+        margin-top: 0;
+        // height: $headerInputHeight;
+        // flex-basis: 24%;
+        // padding: 19px 32px;
+        // @include headerInputsBorder;
+        // border-radius: 0px 10px 10px 0px;
+        // @include InputTransition;
+        // @include onlyBackgroundHover($grayHover);
+        // @include inputBgcBorderFocus($inputBgcHover, $mainPurple);
+        &__select {
+          @include positionZero(relative);
+          // z-index: 3;
+          display: flex;
+          margin-left: -2px;
+          padding: 19px 32px;
+          width: 100%;
+          height: $headerInputHeight;
+          @include headerInputsBorder;
+          border-radius: 0px 10px 10px 0px;
+          @include fontProperties(16px, $mainPurple, 21px);
+          background-color: $mainBGC;
+          .open-icon {
+            @include positionTopRight(27px, 32px);
+            z-index: 3;
+          }
+          // @include InputTransition;
+          // @include inputBgcBorderFocus($mainBGC, $mainPurple);
+          // @include inputHover($mainPurple, $inputBgcHover);
+          // @include borderColorActive($purpleShade);
+
+          // @include borderBgcColorActive($mainBGC, $purpleShade);
+        }
+        &__list {
+          @include positionTopLeft(50px, 0);
+          // z-index: 2;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 1fr;
+          column-gap: 15px;
+          row-gap: 11px;
+          padding: 32px 30px 23px;
+          width: 100%;
+          border: 2px solid $borderGray;
+          border-radius: 0px 0px 10px 10px;
+          background-color: $mainBGC;
+        }
+        &__check {
+          padding: 0 5px;
+          @include fontProperties(16px, $mainBlack, 21px);
+          // @include TextBgcTransition;
+          // @include textHover($purpleHover);
+          // @include textBgcFocus($purpleShade, $bgcPurple);
+          // @include textActive($purpleShade);
+        }
+      }
+
+      // &__btns {
+      //   display: flex;
+      //   justify-content: flex-end;
+      //   flex-basis: 16%;
+      //   // align-self: stretch;
+      //   .profile-btn {
+      //     padding: 4px;
+      //     @include TextBgcTransition;
+      //     @include innerSvgHover($purpleHover);
+      //     @include backgroundInnerSvgFocus($purpleHover, $mainBGC);
+      //     @include InnerSvgActive($purpleShade)
+      //   }
+      //   .basket-btn {
+      //     @include positionZero(relative);
+      //     margin-left: 32px;
+      //     padding: 3px 4px 3px 15px;
+      //     .count {
+      //       position: absolute;
+      //       top: 8px;
+      //       left: 4px;
+      //       padding: 4px;
+      //       width: 15px;
+      //       @include fontProperties(10px, $mainBGC, $fontWeight: 700);
+      //       background-color: $mainOrange;
+      //       border-radius: 100px;
+      //       @include TextBgcTransition;
+      //     }
+      //     svg {
+      //       path {
+      //         @include linkTransition(fill);
+      //       }
+      //     }
+      //     @include TextBgcTransition;
+      //     @include innerSvgHover($purpleHover);
+      //     @include backgroundInnerSvgFocus($purpleHover, $mainBGC);
+      //     @include InnerSvgActive($purpleShade)
+      //   }
+      // }
+    }
+    .h-bottom {
+      display: block;
+      &__route {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+@media(min-width: $media1024) {
+  .header {
+    .h-top {
+      &__content {
+        // align-items: center;
+        // padding: 15px 0;
+      }
+      &__item {
+        // display: flex;
+        // align-items: center;
+        // &:not(:last-child) {
+        //   margin-right: 15px;
+        // }
+        &_left {
+          // flex-direction: row;
+          // align-items: center;
+        }
+        &_right {
+          // justify-content: flex-end;
+          // flex-basis: 55%;
+          // display: none;
+          justify-content: space-between;
+          margin-right: -$containerPadding1024;
+          margin-left: -$containerPadding1024;
+          padding: 11px $containerPadding1024;
+          width: calc(100% + $containerPadding1024 * 2);
+        }
+        .region {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+          margin-right: 33px;
+          &__item {
+            @include fontProperties(16px, $mainBlack, 19px);
+            &:not(:last-child) {
+              margin-right: 4px;
+            }
+            &_value {
+              @include positionZero(relative);
+              display: flex;
+              align-items: center;
+              min-width: 81px;
+              .region-switch {
+                display: flex;
+                align-items: center;
+                padding: 2px 3px;
+                .city {
+                  margin-right: 5px;
+                  @include fontProperties(16px, $mainPurple, 19px);
+                  // @include linkTransition(color);
+                }
+                .city-open-icon {
+                  transform: translateY(1px);
+                  svg {
+                    display: block;
+                    path {
+                      fill: $mainPurple;
+                      // @include linkTransition(fill);
+                    }
+                  }
+                }
+                @include textIconHover($purpleHover);
+                // @include backgroundFocus($bgcPurple, $purpleShade);
+                // @include textIconActive($purpleShade);
+              }
+              .regions {
+                @include positionZero(absolute);
+                z-index: 10;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-content: flex-start;
+                margin-top: 27px;
+                padding: 16px 13px 19px;
+                min-width: 84px;
+                width: 100%;
+                border: 2px solid $borderGray;
+                background-color: $mainBGC;
+                &__item {
+                  display: flex;
+                  justify-content: flex-start;
+                  &:not(:last-child) {
+                    margin-bottom: 11px
+                  }
+                }
+                &__btn {
+                  padding: 0 3px;
+                  @include fontProperties(14px, $mainBlack, 18px);
+                  cursor: pointer;
+                  // @include TextBgcTransition;
+                  @include textHover($purpleHover);
+                  // @include textBgcFocus($purpleShade, $bgcPurple);
+                  // @include textActive($mainGrayText);
+                }
+              }
+            }
+          }
+        }
+        .tel {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+          padding: 3px 10px;
+          &__item {
+            @include fontProperties(14px, $mainOrange, 1);
+            &_icon {
+              margin-right: 3px;
+              svg {
+                display: block;
+                path {
+                  fill: $mainOrange;
+                  // @include linkTransition(fill);
+                }
+              }
+            }
+            &_numbs {
+              // @include linkTransition(color);
+            }
+          }
+          @include textIconHover($orangeHover);
+          // @include bgcChangeOtherInitialFocus($bgcOrange, $mainOrange);
+          // @include textIconActive($orangeShade);
+        }
+        .nav-additional {
+          flex-basis: 75%;
+          &__link {
+            // @include textHover($mainPurple);
+          }
+        }
+        .profile-basket-btns {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+    .h-main {
+      // padding: 32px 0;
+      &__item {
+        // display: flex;
+        // flex-direction: column;
+        // &_top {
+        //   display: flex;
+        //   flex-direction: row;
+        //   justify-content: space-between;
+        //   align-items: center;
+        // }
+        &_bottom {
+          // padding: 32px 0 0;
+          // display: flex;
+          // flex-direction: row;
+          // align-items: center;
+          // align-content: stretch;
+        }
+      }
+      // &__logo {
+      //   height: 27px;
+      //   max-width: 187px;
+      //   margin-right: 15px
+      // }
+      &__nav {
+        flex-basis: 70%;
+      }
+      .main-nav {
+        order: 2;
+        overflow: hidden;
+        &__burger {
+          display: none;
+          &_close {
+            display: none !important;
+          }
+        }
+        &__list {
+          @include positionZero(relative);
+          display: flex !important;
+          flex-direction: row;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 0;
+          row-gap: 10px;
+          opacity: 1 !important;
+          width: auto;
+          height: auto;
+          margin-left: 0;
+          padding: 0;
+          border: none;
+          background-color: transparent;
+          transform: translateX(0) !important;
+        }
+        &__item {
+          &:not(:last-child) {
+            margin: 0;
+          }
+          margin-left: 15px;
+        }
+        &__768-elephant {
+          display: none;
+        }
+        &__link {
+          padding: 2px 10px;
+          white-space: nowrap;
+          @include fontProperties(16px, $mainBlack, 22px);
+          // @include linkTransition(color);
+          @include textHover($mainPurple);
+          // @include backgroundFocus($bgcPurple, $mainBlack);
+          // @include textActive($purpleShade);
+        }
+      }
+      .profile-basket-btns {
+        display: none;
+      }
+
+      .search-good {
+        @include positionZero(relative);
+        // height: $headerInputHeight;
+        flex-basis: 70%;
+        &__input {
+          padding: 20px 70px 20px 59px;
+          // width: 100%;
+          // height: 100%;
+          // @include headerInputsBorder;
+          // border-radius: 10px 0px 0px 10px;
+          // @include fontProperties(16px, $hTopGrayText, 19px);
+          // background-color: $borderGray;
+          // @include InputTransition;
+          // @include inputHover($grayHover, $grayHover);
+          // @include inputBgcBorderFocusWinhZIndex($inputBgcHover, $mainPurple);
+          // &_keypress {
+          //   background-color: $borderGray;
+          //   border-color: $borderGray;
+          //   svg path {
+          //     fill: $mainPurple !important;
+          //   }
+          // }
+          // @include inputWithSvgActive($borderGray, $borderGray, $mainPurple);
+        }
+        &__not-submit {
+          &:hover {
+            @include strokeInBtnChange($mainBGC, $mainPurple, $mainPurple);
+          }
+          &:active {
+            @include strokeInBtnChange($mainBGC, $purpleShade, $purpleShade);
+          }
+        }
+        // &__not-submit {
+        //   @include positionTopRight(14px, 32px);
+        //   z-index: 5;
+        //   @include stopCursor;
+        // }
+        // &__icon {
+        //   @include positionTopLeft(22px, 34px);
+        //   z-index: 5;
+        //   @include stopCursor;
+        // }
+      }
+      .select-category {
+        @include positionZero(relative);
+        flex-basis: 30%;
+        // height: $headerInputHeight;
+        // flex-basis: 24%;
+        // padding: 19px 32px;
+        // @include headerInputsBorder;
+        // border-radius: 0px 10px 10px 0px;
+        // @include InputTransition;
+        // @include onlyBackgroundHover($grayHover);
+        // @include inputBgcBorderFocus($inputBgcHover, $mainPurple);
+        &__select {
+          @include positionZero(relative);
+          // z-index: 3;
+          display: flex;
+          margin-left: -2px;
+          padding: 19px 32px;
+          width: 100%;
+          height: $headerInputHeight;
+          @include headerInputsBorder;
+          border-radius: 0px 10px 10px 0px;
+          @include fontProperties(16px, $mainPurple, 21px);
+          background-color: $mainBGC;
+          .open-icon {
+            @include positionTopRight(27px, 32px);
+            z-index: 3;
+          }
+          // @include InputTransition;
+          // @include inputBgcBorderFocus($mainBGC, $mainPurple);
+          @include inputHover($mainPurple, $inputBgcHover);
+          // @include borderColorActive($purpleShade);
+          // @include borderBgcColorActive($mainBGC, $purpleShade);
+        }
+        &__list {
+          @include positionTopLeft(50px, 0);
+          // z-index: 2;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 1fr;
+          column-gap: 15px;
+          row-gap: 11px;
+          padding: 32px 30px 23px;
+          width: 100%;
+          border: 2px solid $borderGray;
+          border-radius: 0px 0px 10px 10px;
+          background-color: $mainBGC;
+        }
+        &__check {
+          padding: 0 5px;
+          @include fontProperties(16px, $mainBlack, 21px);
+          // @include TextBgcTransition;
+          @include textHover($purpleHover);
+          // @include textBgcFocus($purpleShade, $bgcPurple);
+          // @include textActive($purpleShade);
+        }
+      }
+
+      // &__btns {
+      //   display: flex;
+      //   justify-content: flex-end;
+      //   flex-basis: 16%;
+      //   // align-self: stretch;
+      //   .profile-btn {
+      //     padding: 4px;
+      //     @include TextBgcTransition;
+      //     @include innerSvgHover($purpleHover);
+      //     @include backgroundInnerSvgFocus($purpleHover, $mainBGC);
+      //     @include InnerSvgActive($purpleShade)
+      //   }
+      //   .basket-btn {
+      //     @include positionZero(relative);
+      //     margin-left: 32px;
+      //     padding: 3px 4px 3px 15px;
+      //     .count {
+      //       position: absolute;
+      //       top: 8px;
+      //       left: 4px;
+      //       padding: 4px;
+      //       width: 15px;
+      //       @include fontProperties(10px, $mainBGC, $fontWeight: 700);
+      //       background-color: $mainOrange;
+      //       border-radius: 100px;
+      //       @include TextBgcTransition;
+      //     }
+      //     svg {
+      //       path {
+      //         @include linkTransition(fill);
+      //       }
+      //     }
+      //     @include TextBgcTransition;
+      //     @include innerSvgHover($purpleHover);
+      //     @include backgroundInnerSvgFocus($purpleHover, $mainBGC);
+      //     @include InnerSvgActive($purpleShade)
+      //   }
+      // }
+    }
+  }
+
+  .profile-btn {
+    @include innerSvgHover($purpleHover);
+    @include backgroundInnerSvgFocus($purpleHover, $mainBGC);
+    @include InnerSvgActive($purpleShade)
+  }
+  .basket-btn {
+    @include innerSvgHover($purpleHover);
+    @include backgroundInnerSvgFocus($purpleHover, $mainBGC);
+    @include InnerSvgActive($purpleShade)
+  }
+}
+
+@media(min-width: $mediaDescTop) {
+  .header {
+    .h-top {
+      background-color: $greyLight;
+      &__content {
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        padding: 15px 0;
+      }
+      &__item {
+        // display: flex;
+        // align-items: center;
+        &:not(:last-child) {
+          margin-right: 15px;
+        }
+        &_left {
+          flex-direction: row;
+          align-items: center;
+          // justify-content: flex-start;
+          padding: 0;
+          width: auto;
+        }
+        &_right {
+          display: flex;
+          align-items: center;
+          margin: 0;
+          padding: 0;
+          width: auto;
+          background-color: transparent;
+          justify-content: flex-end;
+          flex-basis: 70%;
+        }
+        .region {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+          margin-right: 33px;
+          &__item {
+            @include fontProperties(16px, $mainBlack, 19px);
+            &:not(:last-child) {
+              margin-right: 4px;
+            }
+            &_value {
+              @include positionZero(relative);
+              display: flex;
+              align-items: center;
+              min-width: 81px;
+              .region-switch {
+                display: flex;
+                align-items: center;
+                padding: 2px 3px;
+                .city {
+                  margin-right: 5px;
+                  @include fontProperties(16px, $mainPurple, 19px);
+                  // @include linkTransition(color);
+                }
+                .city-open-icon {
+                  transform: translateY(1px);
+                  svg {
+                    display: block;
+                    path {
+                      fill: $mainPurple;
+                      // @include linkTransition(fill);
+                    }
+                  }
+                }
+                // @include backgroundFocus($bgcPurple, $purpleShade);
+                // @include textIconActive($purpleShade);
+              }
+              .regions {
+                @include positionZero(absolute);
+                z-index: 10;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-content: flex-start;
+                margin-top: 27px;
+                padding: 16px 13px 19px;
+                min-width: 84px;
+                width: 100%;
+                border: 2px solid $borderGray;
+                background-color: $mainBGC;
+                &__item {
+                  display: flex;
+                  justify-content: flex-start;
+                  &:not(:last-child) {
+                    margin-bottom: 11px
+                  }
+                }
+                &__btn {
+                  padding: 0 3px;
+                  @include fontProperties(14px, $mainBlack, 18px);
+                  cursor: pointer;
+                  // @include TextBgcTransition;
+                  // @include textBgcFocus($purpleShade, $bgcPurple);
+                  // @include textActive($mainGrayText);
+                }
+              }
+            }
+          }
+        }
+        .tel {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+          // padding: 3px;
+          &__item {
+            @include fontProperties(14px, $mainOrange, 1);
+            &_icon {
+              margin-right: 3px;
+              svg {
+                display: block;
+                path {
+                  fill: $mainOrange;
+                  // @include linkTransition(fill);
+                }
+              }
+            }
+            &_numbs {
+              // @include linkTransition(color);
+            }
+          }
+          // @include textIconHover($orangeHover);
+          // @include bgcChangeOtherInitialFocus($bgcOrange, $mainOrange);
+          // @include textIconActive($orangeShade);
+        }
+        .nav-additional {
+          flex-basis: 75%;
+          &__link {
+            // padding: 1px 10px 3px;
+            // @include fontProperties(14px, $hTopGrayText, 1);
+            // @include linkTransition(fill);
+            // @include textHover($mainPurple);
+            // @include backgroundFocus($bgcPurple, $purpleShade);
+            // @include textActive($purpleShade);
+          }
+        }
+        .profile-basket-btns {
+          display: none;
+        }
+      }
+    }
+    .h-main {
+      // padding: 32px 0;
+      &__item {
+        // display: flex;
+        // flex-direction: column;
+        // &_top {
+        //   display: flex;
+        //   flex-direction: row;
+        //   justify-content: space-between;
+        //   align-items: center;
+        // }
+        &_bottom {
+          // padding: 32px 0 0;
+          // display: flex;
+          // flex-direction: row;
+          // align-items: center;
+          // align-content: stretch;
+        }
+      }
+      // &__logo {
+      //   height: 27px;
+      //   max-width: 187px;
+      //   margin-right: 15px
+      // }
+      &__nav {
+        flex-basis: 70%;
+      }
+      .main-nav {
+        order: 2;
+        &__burger {
+          display: none;
+        }
+        &__list {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        &__item {
+          &:not(:last-child) {
+            // margin-right: 15px;
+          }
+        }
+        &__link {
+          padding: 2px 10px;
+          @include fontProperties(16px, $mainBlack, 22px);
+          // @include linkTransition(color);
+          // @include textHover($mainPurple);
+          // @include backgroundFocus($bgcPurple, $mainBlack);
+          // @include textActive($purpleShade);
+        }
+      }
+      .profile-basket-btns {
+        display: none;
+      }
+
+      .search-good {
+        @include positionZero(relative);
+        height: $headerInputHeight;
+        flex-basis: 60%;
+        &__input {
+          padding: 20px 70px 20px 59px;
+          width: 100%;
+          height: 100%;
+          // @include headerInputsBorder;
+          // border-radius: 10px 0px 0px 10px;
+          // @include fontProperties(16px, $hTopGrayText, 19px);
+          // background-color: $borderGray;
+          // @include InputTransition;
+          // @include inputHover($grayHover, $grayHover);
+          // @include inputBgcBorderFocusWinhZIndex($inputBgcHover, $mainPurple);
+
+
+          // &_keypress {
+          //   background-color: $borderGray;
+          //   border-color: $borderGray;
+          //   svg path {
+          //     fill: $mainPurple !important;
+          //   }
+          // }
+          // @include inputWithSvgActive($borderGray, $borderGray, $mainPurple);
+        }
+        // &__not-submit {
+        //   @include positionTopRight(14px, 32px);
+        //   z-index: 5;
+        //   @include stopCursor;
+        // }
+        // &__icon {
+        //   @include positionTopLeft(22px, 34px);
+        //   z-index: 5;
+        //   @include stopCursor;
+        // }
+      }
+      .select-category {
+        @include positionZero(relative);
+        flex-basis: 24%;
+        // height: $headerInputHeight;
+        // flex-basis: 24%;
+        // padding: 19px 32px;
+        // @include headerInputsBorder;
+        // border-radius: 0px 10px 10px 0px;
+        // @include InputTransition;
+        // @include onlyBackgroundHover($grayHover);
+        // @include inputBgcBorderFocus($inputBgcHover, $mainPurple);
+        &__select {
+          @include positionZero(relative);
+          // z-index: 3;
+          display: flex;
+          margin-left: -2px;
+          padding: 19px 32px;
+          width: 100%;
+          height: $headerInputHeight;
+          @include headerInputsBorder;
+          border-radius: 0px 10px 10px 0px;
+          @include fontProperties(16px, $mainPurple, 21px);
+          background-color: $mainBGC;
+          .open-icon {
+            @include positionTopRight(27px, 32px);
+            z-index: 3;
+          }
+          // @include InputTransition;
+          // @include inputBgcBorderFocus($mainBGC, $mainPurple);
+          // @include inputHover($mainPurple, $inputBgcHover);
+          // @include borderColorActive($purpleShade);
+
+          // @include borderBgcColorActive($mainBGC, $purpleShade);
+        }
+        &__list {
+          @include positionTopLeft(50px, 0);
+          // z-index: 2;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 1fr;
+          column-gap: 15px;
+          row-gap: 11px;
+          padding: 32px 30px 23px;
+          width: 100%;
+          border: 2px solid $borderGray;
+          border-radius: 0px 0px 10px 10px;
+          background-color: $mainBGC;
+        }
+        &__check {
+          padding: 0 5px;
+          @include fontProperties(16px, $mainBlack, 21px);
+          // @include TextBgcTransition;
+          // @include textHover($purpleHover);
+          // @include textBgcFocus($purpleShade, $bgcPurple);
+          // @include textActive($purpleShade);
+        }
+      }
+
+      &__btns {
+        display: flex;
+        justify-content: flex-end;
+        flex-basis: 16%;
+        // align-self: stretch;
+        .profile-btn {
+          padding: 4px;
+          // @include TextBgcTransition;
+          // @include innerSvgHover($purpleHover);
+          // @include backgroundInnerSvgFocus($purpleHover, $mainBGC);
+          // @include InnerSvgActive($purpleShade)
+        }
+        .basket-btn {
+          @include positionZero(relative);
+          margin-left: 32px;
+          padding: 3px 4px 3px 15px;
+          .count {
+            position: absolute;
+            top: 8px;
+            left: 4px;
+            padding: 4px;
+            width: 15px;
+            @include fontProperties(10px, $mainBGC, $fontWeight: 700);
+            background-color: $mainOrange;
+            border-radius: 100px;
+            // @include TextBgcTransition;
+          }
+          svg {
+            path {
+              // @include linkTransition(fill);
+            }
+          }
+          // @include TextBgcTransition;
+          // @include innerSvgHover($purpleHover);
+          // @include backgroundInnerSvgFocus($purpleHover, $mainBGC);
+          // @include InnerSvgActive($purpleShade)
+        }
+      }
+    }
+  }
+}

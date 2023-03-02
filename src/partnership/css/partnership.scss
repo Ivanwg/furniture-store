@@ -1,0 +1,137 @@
+$space: 32px;
+$halfSpace: 12px;
+
+.partnership {
+  // padding: $space 0 0;
+  padding-top: 2px;
+  &__content {
+    max-width: 100%;
+  }
+  &__article {
+    padding-top: $space;
+  }
+  .p-article {
+    &__title {
+      margin-bottom: $halfSpace;
+      &_min {
+        font-size: 14px;
+        line-height: 19px;
+      }
+    }
+    &__desc {
+      // @include fontProperties(14px, $mainGrayText, 180%);
+      @include fontProperties(14px, $mainGrayText, 25px);
+      &_lh-150 {
+        line-height: 150%;
+      }
+    }
+
+  }
+  .u-get {
+    &__item {
+      display: flex;
+      align-items: flex-start;
+      @include itemMBottom12;
+    }
+    &__img {
+      flex-shrink: 0;
+      margin-right: $halfSpace;
+      width: 25px;
+      height: 25px;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    &__content {
+      max-width: 100%;
+    }
+  }
+  .u-benefits {
+    &__item {
+      @include itemMBottom12;
+    }
+    &__title {
+      margin-bottom: $halfSpace;
+      @include fontProperties(16px, $mainOrange, 22px, 600);
+    }
+  }
+  .guarantees {
+    &__item {
+      @include itemMBottom12;
+    }
+    &__content {
+      display: flex;
+      align-items: flex-start;
+    }
+    &__number {
+      flex-shrink: 0;
+      margin-right: $halfSpace;
+      @include fontProperties(16px, $mainOrange, 180%, 600);
+    }
+  }
+  .term {
+    display: flex;
+    align-items: center;
+    &__img {
+      flex-shrink: 0;
+      margin-right: 16px;
+      height: 54px;
+      width: 36px;
+      background-image: url(../img/pen.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    &__content {
+      flex-shrink: 1;
+      max-width: 100%;
+      @include fontProperties(16px, $mainBlack, 150%);
+    }
+  }
+}
+
+
+
+
+@media(min-width: $media768) {
+  .partnership {
+    padding: $space 0 0;
+    &__article {
+    }
+    .p-article {
+      &__title {
+      }
+      &__desc {
+        font-size: 16px;
+      }
+    }
+    .term {
+      &__img {
+        margin-right: $space;
+        height: 116px;
+        width: 77px;
+      }
+      &__content {
+        font-size: 24px;
+      }
+    }
+  }
+
+}
+
+@media(min-width: $media1024) {
+  .partnership {
+    &__content {
+      max-width: 843px;
+    }
+    .p-article {
+    }
+    .u-get {
+      &__content {
+        max-width: 587px;
+      }
+    }
+  }
+}
+
+@media(min-width: $mediaDescTop) {
+
+}

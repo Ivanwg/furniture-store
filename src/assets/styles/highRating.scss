@@ -1,0 +1,128 @@
+.high-rating {
+  // display: none;
+  padding-top: 70px;
+  &__title {
+    // margin-bottom: 26px;
+    margin-bottom: 28px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    // grid-auto-rows: 420px;
+  }
+
+  &__btn-wrap {
+    display: flex;
+    justify-content: stretch;
+    // margin-top: 32px;
+    margin-top: 30px;
+  }
+  &__btn {
+    padding: 22px 36px;
+    width: 100%;
+  }
+
+  .special-card {
+    padding: 40px 16px 16px;
+    &__img-wrap {
+      // align-items: flex-end;
+      flex-basis: auto;
+      margin-bottom: 12px;
+      height: 53px;
+    }
+    .special-text {
+      &__item:not(:last-child) {
+        // margin-bottom: 16px;
+        margin-bottom: 15px;
+        transform: translateY(1px);
+      }
+    }
+    &__text {
+      justify-content: flex-start;
+    }
+    &__title {
+      font-size: 16px;
+      line-height: 21px;
+    }
+    &__price-wrap {
+      display: flex;
+      align-items: flex-start;
+      flex-grow: 10;
+    }
+    &__btn {
+      padding: 12px;
+      width: 100%;
+    }
+  }
+}
+
+
+
+
+
+@media(min-width: 400px) {
+  .high-rating {
+    .special-card {
+      &__btn {
+        padding: 12px 25px;
+        width: auto;
+      }
+    }
+  }
+}
+
+
+@media(min-width: $media768) {
+  .high-rating {
+    &__list {
+      gap: 32px
+    }
+
+    &__btn-wrap {
+      justify-content: center;
+    }
+    &__btn {
+      width: auto;
+    }
+
+    .special-card {
+      padding: 55px 30px 30px;
+      .special-text {
+        &__item:not(:last-child) {
+          margin-bottom: 23px;
+        }
+      }
+      &__img-wrap {
+        align-items: flex-end;
+        padding-top: 10px;
+        height: 125px;
+      }
+      &__title {
+        font-size: 24px;
+        line-height: 31px;
+      }
+      &__btn {
+        padding: 19px 35px;
+        width: auto;
+      }
+    }
+  }
+}
+
+@media(min-width: $media1024) {
+  .high-rating {
+    &__list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media(min-width: $mediaDescTop) {
+  .high-rating {
+    &__list {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

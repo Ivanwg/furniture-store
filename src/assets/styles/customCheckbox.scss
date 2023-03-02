@@ -1,0 +1,95 @@
+$boxSize: 14px;
+
+.checkbox-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: calc($boxSize + 8px);
+  cursor: pointer;
+  &:focus,
+  &:focus-visible {
+    .checkbox-check {
+      border-color: red;
+    }
+  }
+}
+.checkbox {
+  // display: none;
+  @include visual-hide;
+  &-text {
+    vertical-align: middle;
+    @include fontProperties(12px, $mainBlack, 14px);
+  }
+  &-link {
+    color: $mainPurple;
+    text-decoration: underline;
+    @include TextBgcTransition;
+    @include textBgcFocus($mainPurple, $inputBgcHover);
+    @include textActive($purpleShade);
+  }
+}
+.checkbox-check {
+  @include positionZero(absolute);
+  top: 0;
+  width: $boxSize;
+  height: $boxSize;
+  border: 2px solid $hTopGrayText;
+  border-radius: 2px;
+  text-align: center;
+  @include InputTransition;
+}
+.checkbox-check:before {
+  @include positionZero(absolute);
+  // content: '\2714';
+  // top: -4px;
+  // left: -1px;
+  // bottom: 0;
+  // right: 0;
+  // width: 10px;
+
+
+  top: 2px;
+  left: 1px;
+  width: 7px;
+  height: 3px;
+  border-left: 2px solid $mainBGC;
+  border-bottom: 2px solid $mainBGC;
+  transform: rotate(-45deg);
+
+
+  opacity: 0;
+  color: $mainBGC;
+  @include linkTransition(opacity);
+}
+.checkbox:checked + .checkbox-check {
+  background-color: $mainPurple;
+  border-color: $mainPurple;
+}
+.checkbox:checked + .checkbox-check:before {
+  opacity: 1;
+}
+
+.checkbox:focus + .checkbox-check {
+  // outline: 1px solid $purpleShade;
+  // outline-offset: 1px;
+  border-color: $purpleShade;
+}
+
+
+
+@media(min-width: $media1024) {
+  .checkbox {
+    &-link {
+      @include textHover($purpleHover);
+      @include textActive($purpleShade);
+    }
+  }
+  .checkbox-label {
+    &:hover {
+      .checkbox-check {
+        border-color: $mainPurple;
+      }
+    }
+  }
+
+}

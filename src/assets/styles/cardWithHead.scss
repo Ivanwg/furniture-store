@@ -1,0 +1,57 @@
+.card-with-head {
+  $gap: 30px;
+  padding: 0 $gap $gap;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  @include commonCard;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  &__img-wrap {
+    margin: 0 (-$gap) 0;
+    height: 202px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &__text {
+    margin-top: $gap;
+    margin-bottom: 28px;
+    @include fontProperties(16px, $mainBlack, 22px);
+    // margin-bottom: $gap;
+  }
+  &__btn {
+    padding: 19px 35px;
+    padding: 20px 34px 18px;
+  }
+}
+
+
+@media(min-width: $media768) {
+
+}
+
+@media(min-width: $media1024) {
+
+}
+
+@media(min-width: $mediaDescTop) {
+  .card-with-head {
+    &__img-wrap {
+      height: 426px;
+    }
+    &__content {
+
+    }
+    &__text {
+      font-size: 24px;
+      line-height: 33px;
+    }
+  }
+}

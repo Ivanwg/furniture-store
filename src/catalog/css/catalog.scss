@@ -1,0 +1,499 @@
+$mobileSpace: 16px;
+$space: 32px;
+
+
+.oxford-card {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: $mainBlack;
+  &__content {
+  }
+  &__img-wrap {
+    @include positionZero(relative);
+    width: 100%;
+    height: 170px;
+  }
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  &__text-wrap {
+    padding: 30px 67px 30px 30px;
+  }
+  &__text {
+    margin-bottom: 12px;
+  }
+  &__title {
+    @include playFairFont(24px, $oxford, 29px);
+  }
+  &__desc {
+    @include fontProperties(14px, $hTopGrayText, 18px);
+  }
+}
+
+.choose {
+  @include positionZero(relative);
+  $boxSize: 20px;
+  &__name-wrap {
+    @include positionZero(relative);
+    z-index: 2;
+    padding: 7px 13px;
+    border: 2px solid $greyLight;
+    border-radius: 10px;
+    background-color: $greyLight;
+    cursor: pointer;
+    @include InputTransition;
+  }
+  &__title {
+    @include fontProperties(14px, $mainBlack, 22px);
+  }
+  &__icon {
+    @include positionZero(absolute);
+    z-index: 3;
+    right: 16px;
+    left: auto;
+    bottom: 0;
+    height: 100%;
+    width: 12px;
+    border: none;
+    margin: 0;
+    background-image: url(../img/open.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    pointer-events: none;
+  }
+  &__content {
+    @include positionZero(absolute);
+    z-index: 1;
+    display: none;
+    padding: 63px 14px 32px;
+    width: 100%;
+    @include headerInputsBorder(1px);
+    border-radius: 10px;
+    background-color: $mainBGC;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+    .checkbox {
+      &-label {
+        padding-left: calc($boxSize + 12px);
+      }
+      & + .checkbox__check {
+        width: $boxSize;
+        height: $boxSize;
+      }
+      & + .checkbox__check:before {
+        top: -2px;
+        left: 2px;
+      }
+      &__text {
+        @include fontProperties(16px, $mainGrayText, 130%);
+      }
+    }
+  }
+}
+
+.choose-price {
+  &__label {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    @include fontProperties(16px, $mainGrayText, 130%);
+  }
+  &__span {
+    @include fontProperties(16px, $mainGrayText, 130%);
+    margin-right: 9px;
+  }
+  &__input {
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+    padding: 3px 13px 4px;
+    width: 100%;
+    border: 1px solid $hTopGrayText;
+    border-radius: 2px;
+    @include fontProperties(16px, $mainGrayText, 21px);
+    &::-webkit-input-placeholder,
+    &:-ms-input-placeholder,
+    &::placeholder {
+      @include fontProperties(16px, $mainGrayText, 21px);
+    }
+  }
+  &__scroll {
+    display: none;
+  }
+}
+
+.catalog {
+  &__content {
+    margin-top: $mobileSpace;
+  }
+  &__title {
+    &_desctop {
+      display: none;
+    }
+  }
+
+  .filters {
+    &__title {
+      margin-bottom: $mobileSpace;
+      @include fontProperties(14px, $mainBlack, 130%);
+      &_desctop {
+        display: none;
+      }
+    }
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: $mobileSpace;
+    }
+    &__item {
+      .choose {
+        &__name-wrap {
+          z-index: 2;
+        }
+        &__icon {
+          z-index: 3;
+        }
+        &__content {
+          z-index: 1;
+        }
+      }
+      &_top {
+        .choose {
+          &__name-wrap {
+            z-index: 5;
+          }
+          &__icon {
+            z-index: 6;
+          }
+          &__content {
+            z-index: 4;
+          }
+        }
+      }
+      &_active {
+        .choose {
+          &__name-wrap {
+            border-color: $purpleShade;
+          }
+          &__icon {
+            transform: rotate(180deg);
+          }
+          &__content {
+            display: block;
+          }
+        }
+      }
+    }
+    &__banner {
+      display: none;
+    }
+  }
+
+  .catalog-of-cards {
+    padding-top: $space;
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: $mobileSpace;
+      grid-auto-rows: 1fr;
+    }
+
+    .special-card {
+      padding: 40px 16px 16px;
+      &__img-wrap {
+        flex-basis: auto;
+        height: 63px;
+      }
+      &__text {
+        justify-content: flex-start;
+      }
+      &__title {
+        font-size: 16px;
+        line-height: 130%;
+      }
+      .special-text {
+        &__item:not(:last-child) {
+          margin-bottom: $mobileSpace;
+        }
+      }
+      &__price-wrap {
+        display: flex;
+        align-items: flex-start;
+        flex-grow: 10;
+      }
+      &__btn {
+        padding: 10px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+@media(min-width: $media768) {
+  .catalog {
+    padding-top: $space;
+    &__content {
+      margin-top: 27px;
+    }
+
+    .filters {
+      &__title {
+        margin-bottom: $mobileSpace;
+      }
+      &__list {
+        max-width: 406px;
+        column-gap: $space;
+        row-gap: $mobileSpace;
+      }
+    }
+
+    .catalog-of-cards {
+      &__list {
+        gap: $space;
+      }
+
+      .special-card {
+        padding: 55px 30px 30px;
+        &__img-wrap {
+          height: 133px;
+        }
+        &__title {
+          font-size: 24px;
+        }
+        .special-text {
+          &__item:not(:last-child) {
+            margin-bottom: 24px;
+          }
+        }
+        &__btn {
+          padding: 17px 33px;
+          width: auto;
+        }
+      }
+    }
+  }
+
+}
+
+@media(min-width: $media1024) {
+  .catalog {
+    &__content {
+      margin-top: $mobileSpace;
+    }
+
+    .filters {
+      display: flex;
+      align-items: center;
+      justify-content: stretch;
+      &__title {
+        margin-bottom: 0;
+        margin-right: 43px;
+      }
+      &__list {
+        display: flex;
+        gap: 0;
+        align-items: center;
+        max-width: 100%;
+      }
+      &__item {
+        width: 187px;
+        &:not(:last-child) {
+          margin-right: $space;
+        }
+      }
+    }
+
+    .catalog-of-cards {
+      &__list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .special-card {
+      }
+    }
+  }
+}
+
+@media(min-width: $mediaDescTop) {
+  $bottom: 64px;
+  .catalog {
+    &__title {
+      display: none;
+      &_desctop {
+        display: block;
+      }
+    }
+    &__content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 1fr;
+      gap: $space;
+      margin: 0;
+      padding-bottom: $bottom;
+      width: 100%;
+    }
+
+    .filters {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      &__title {
+        display: none;
+        &_desctop {
+          display: block;
+          font-size: 18px;
+        }
+      }
+      &__list {
+        display: block;
+        padding-top: 20px;
+        max-width: none;
+      }
+      &__item {
+        width: 100%;
+        margin-right: 0;
+        &:not(:last-child) {
+          margin-bottom: 26px;
+        }
+        .choose {
+          &__name-wrap {
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            background-color: transparent;
+            cursor: auto;
+          }
+          &__title {
+            @include fontProperties(16px, $mainBlack, 21px, 600);
+          }
+          &__icon {
+            display: none;
+          }
+          &__content {
+            position: static;
+            display: block;
+            padding: 10px 0 0;
+            border: none;
+            border-radius: 0;
+            background-color: transparent;
+          }
+          &-price {
+            padding-bottom: 10px;
+            &__list {
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+            }
+            &__item {
+              flex-basis: 40%;
+              margin-bottom: 0;
+            }
+            &__scroll {
+              display: block;
+              margin-top: 10px;
+            }
+            &__slider {
+              width: 100%;
+              height: 10px;
+            }
+            &__icon {
+              path {
+                cursor: pointer;
+              }
+            }
+            .noUi-handle {
+              top: 0;
+              right: -7px;
+              width: 0;
+              height: 0;
+              background-color: transparent;
+              border: none;
+              border-radius: 0px;
+              border-left: 6.5px solid transparent;
+              border-right: 7px solid transparent;
+              border-bottom: 13px solid $mainPurple;
+              box-shadow: none;
+              cursor: pointer;
+              &::before,
+              &::after {
+                display: none;
+              }
+            }
+            .noUi-target {
+              height: 3px;
+              box-shadow: none;
+              border: none;
+              border-radius: 3px;
+              background: $grayHover;
+            }
+            .noUi-connect {
+              background: $mainPurple;
+            }
+          }
+        }
+        &_active {
+          .choose {
+            &__content {
+              // display: none;
+            }
+          }
+        }
+      }
+      &__banner {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        justify-self: end;
+        flex-grow: 10;
+        width: 100%;
+
+      }
+    }
+
+    .catalog-of-cards {
+      @include positionZero(relative);
+      grid-column: span 3;
+      padding-top: 0;
+      &__list {
+        margin-top: 24px;;
+      }
+      &__item {
+        min-height: 420px;
+      }
+
+      .special-card {
+      }
+      .pagination {
+        &__btns-wrap {
+          @include positionZero(absolute);
+          top: auto;
+          right: 0;
+          bottom: -$bottom;
+        }
+      }
+    }
+  }
+}

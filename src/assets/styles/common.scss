@@ -1,0 +1,300 @@
+@import '_mixin.scss';
+@import '_variables.scss';
+
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  @include fontProperties(16px, $mainBlack, 21px);
+}
+
+body {
+  min-width: 320px;
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+svg {
+  display: block;
+}
+
+.container {
+  max-width: $containerMaxWidth;
+  // padding: 0 $containerPadding;
+  padding: 0 $containerPadding320;
+  margin: 0 auto;
+}
+
+a:focus, button:focus, div:focus {
+  border: none;
+  outline: none;
+}
+
+.img {
+  &_contain {
+  height: 100%;
+  object-fit: contain;
+  }
+}
+
+.btn {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input {
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.logo-link {
+  text-decoration: none;
+  cursor: pointer;
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    border: none;
+    outline: none;
+  }
+}
+
+.logo {
+  width: 187px;
+  height: 27px;
+}
+
+.main {
+  padding-bottom: 70px;
+}
+
+.title {
+  @include fontProperties(16px, $mainBlack, 1);
+  letter-spacing: 0px;
+  text-align: left;
+  &_h2 {
+    font-size: 24px;
+  }
+  &_h3-partnership {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.section {
+  padding-top: 70px;
+}
+
+.fillPurpleBtn16px {
+  border-radius: 10px;
+  @include fontProperties(16px, $mainBGC, 1, 700);
+  background-color: $mainPurple;
+  outline: none;
+  @include bgcOutlineTransition;
+  @include bgcOutlineFocus($mainPurple, $purpleShade, 2px);
+  @include bgcWithoutOutlineActive($purpleShade);
+}
+
+.transparentPurpleBtn16px {
+  border: 2px solid $mainPurple !important;
+  border-radius: 10px;
+  @include fontProperties(16px, $mainPurple, 1, 600);
+  @include InputTransition;
+  @include textBgcFocus($mainBGC, $purpleHover);
+  @include borderBgcColorTextActive($purpleShade, $purpleShade, $mainBGC);
+}
+
+.mainLink {
+  @include fontProperties(14px, $hTopGrayText);
+  @include TextBgcTransition;
+  @include backgroundFocus($bgcPurple, $purpleShade);
+  @include textActive($purpleShade);
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -3px;
+  margin-left: -3px;
+  padding: 3px;
+  @include linkTransition(background-color);
+  svg {
+    path {
+      @include linkTransition(fill);
+    }
+    g {
+     path {
+      @include linkTransition(fill);
+     }
+    }
+  }
+  &:focus,
+  &:focus-visible {
+    @include socialLink($purpleHover, $grayHover);
+  }
+  &:active {
+    @include socialLink(transparent, $purpleShade);
+  }
+}
+
+.to-categories {
+  display: flex;
+  align-items: center;
+  &_mobile {
+    align-items: end;
+  }
+  &__text {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    &_768 {
+      display: none;
+      @include fontProperties(16px, $mainPurple, 19px, 700);
+    }
+    &_mobile {
+      display: block;
+      @include fontProperties(16px, $mainBlack);
+    }
+    @include InputTransition;
+  }
+  &__icon {
+    display: flex;
+    align-items: center;
+    transform: translateY(-2px);
+  }
+  svg {
+    g > path,
+    g > circle {
+      stroke: $mainPurple;
+      @include linkTransition(stroke);
+    }
+    defs > clipPath > rect {
+      fill: transparent;
+      @include linkTransition(fill);
+    }
+  }
+  &:focus {
+    @include catalogChange($mainBGC, $mainPurple, $purpleHover);
+  }
+  &:active {
+    @include catalogChange($mainBGC, $purpleShade, $purpleShade);
+  }
+}
+
+@media(min-width: $media768) {
+  .container {
+    padding: 0 $containerPadding768;
+  }
+
+
+  .title {
+    &_h2 {
+      font-size: 32px;
+    }
+    &_h3-partnership {
+      font-size: 24px;
+      line-height: 33px;
+    }
+  }
+
+  .to-categories {
+    &_mobile {
+      align-items: center;
+    }
+    &__text {
+      &_768 {
+        display: block;
+      }
+      &_mobile {
+        display: none;
+      }
+    }
+    &__icon {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+@media(min-width: $media1024) {
+  .container {
+    padding: 0 $containerPadding1024;
+  }
+
+  .fillPurpleBtn16px {
+    @include bgcHover($purpleHover);
+    @include bgcWithoutOutlineActive($purpleShade);
+  }
+  .transparentPurpleBtn16px {
+    @include bgcColorTextHover($mainPurple, $mainBGC);
+    @include borderBgcColorTextActive($purpleShade, $purpleShade, $mainBGC);
+  }
+  .mainLink {
+    @include textHover($mainPurple);
+    @include textActive($purpleShade);
+  }
+  .social-link {
+    &:hover {
+      @include socialLink(transparent, $mainPurple);
+    }
+    &:active {
+      @include socialLink(transparent, $purpleShade);
+    }
+  }
+  .to-categories {
+    &:hover {
+      @include catalogChange($mainBGC, $mainPurple, $mainPurple);
+    }
+    &:active {
+      @include catalogChange($mainBGC, $purpleShade, $purpleShade);
+    }
+  }
+}
+
+@media(min-width: $mediaDescTop) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+
+
+
+
+
+

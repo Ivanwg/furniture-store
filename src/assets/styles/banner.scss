@@ -1,0 +1,185 @@
+.banner {
+  // display: none;
+  &__swiper {
+    width: 100%;
+    // height: 307px;
+  }
+  &__swiper-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+  &__slide {
+    margin-bottom: 92px;
+    width: 100%;
+    // height: 100%;
+    height: auto;
+    &_discount {
+      // background-image: url(../img/slide1_2x.jpg);
+      // background-size: cover;
+    }
+    &_accessories {
+      // background: url(../img/slide2_2x.jpg);
+      // background-size: cover;
+    }
+    &_texttile {
+      // background: url(../img/slide3_2x.jpg);
+      // background-size: cover;
+    }
+  }
+  &__picture {
+    @include positionZero(absolute);
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+  &__img {
+    width: 100%;
+    // height: 210px;
+    height: 100%;
+    object-position: 50% 100%;
+  }
+  &__pagination {
+    // top: 185px;
+    // bottom: 100px !important;
+    top: auto;
+    // bottom: calc(10px + 92px) !important;
+    bottom: calc(10px + 86px) !important;
+    .swiper-pagination-bullet {
+      width: 6px;
+      height: 6px;
+      background: $mainBlack;
+      opacity: 0.3;
+      margin-left: 0 !important;
+      &:not(:last-child) {
+        margin: 0 8px 0 0 !important;
+      }
+      &-active {
+        opacity: 1;
+      }
+    }
+  }
+  &__text-content {
+    // @include positionZero(absolute);
+    @include positionZero(relative);
+    z-index: 2;
+    height: 100%;
+    min-height: 210px;
+    pointer-events: none;
+  }
+  &__title {
+    padding: 30px calc(30px - $containerPadding320);
+    @include fontProperties(20px, $hTopGrayText, 28px, 700);
+    &_white {
+      color: $mainBGC;
+    }
+  }
+  &__btn-wrap {
+    // position: relative;
+    position: absolute;
+    left: 0;
+    // top: 0;
+    top: 100%;
+    z-index: 3;
+    // margin-top: 32px;
+    margin-top: 33px;
+    width: 100%;
+  }
+  &__btn {
+    width: 100%;
+    padding: 22px 50px;
+    // @include fontProperties(16px, $mainBGC, 1, 700);
+    // background-color: $mainPurple;
+    // border-radius: 10px;
+    // outline: none;
+    // @include bgcOutlineTransition;
+    // @include bgcOutlineFocus($mainPurple, $purpleShade, 2px);
+    // @include bgcWithoutOutlineActive($purpleShade);
+  }
+}
+
+
+
+
+@media(min-width: $media768) {
+  .banner {
+    &__swiper {
+      // height: 400px;
+    }
+    &__slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 0;
+    }
+    &__img {
+      height: 100%;
+      object-position: 60% 50%;
+    }
+    &__pagination {
+      top: auto;
+      bottom: 23px !important;
+      .swiper-pagination-bullet {
+        width: 14px;
+        height: 14px;
+        &:not(:last-child) {
+          margin: 0 16px 0 0 !important;
+        }
+      }
+    }
+    &__text-content {
+      // @include positionZero(relative);
+      // top: auto;
+      bottom: 100%;
+      width: 100%;
+      min-height: auto;
+      height: auto;
+    }
+    &__title {
+      // padding: 80px 0;
+      padding: 80px 0 49px;
+      font-size: 48px;
+      line-height: 65px;
+    }
+    &__btn-wrap {
+      top: auto;
+      bottom: calc(100% + 30px);
+      margin-top: 0;
+      margin-bottom: 80px;
+      position: relative;
+      top: auto;
+      bottom: auto;
+    }
+    &__btn {
+      width: auto;
+    }
+  }
+}
+
+@media(min-width: $media1024) {
+  .banner {
+    &__img {
+      object-position: 35% 100%;
+    }
+    &__text-content {
+
+
+    }
+    &__title {
+      max-width: 600px;
+      font-size: 48px;
+      line-height: 65px;
+    }
+    // &__btn {
+    //   @include bgcHover($purpleHover);
+    //   @include bgcWithoutOutlineActive($purpleShade);
+    // }
+  }
+}
+
+@media(min-width: $mediaDescTop) {
+  .banner {
+    &__img {
+      object-position: 40% 100%;
+    }
+  }
+}

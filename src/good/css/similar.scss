@@ -1,0 +1,85 @@
+$mobileSpace: 16px;
+
+.similar {
+  padding-top: 70px;
+  &__title {
+    margin-bottom: 24px;
+    @include fontProperties(24px, $mainBlack, 130%);
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  &__item {
+    display: flex;
+    align-items: stretch;
+  }
+  .special-card {
+    padding: 40px 16px 16px;
+    &__img-wrap {
+      flex-basis: auto;
+      height: 62px;
+    }
+    &__title {
+      font-size: 16px;
+      line-height: 130%;
+    }
+    &__text {
+      justify-content: flex-start;
+    }
+    &__price-wrap {
+      display: flex;
+      align-items: flex-start;
+      flex-grow: 10;
+    }
+    .special-text {
+      &__item:not(:last-child) {
+        margin-bottom: $mobileSpace;
+      }
+    }
+    &__btn {
+      padding: 10px;
+      width: 100%;
+    }
+  }
+
+}
+
+
+
+
+@media(min-width: $media768) {
+  .similar {
+    padding-top: 33px;
+    .special-card {
+      padding: 55px 30px 30px;
+      &__img-wrap {
+        height: 133px;
+      }
+      &__title {
+        font-size: 24px;
+      }
+      &__btn {
+        padding: 17px 33px;
+        width: auto;
+      }
+      .special-text {
+        &__item:not(:last-child) {
+          margin-bottom: 24px;
+        }
+      }
+    }
+  }
+}
+
+@media(min-width: $media1024) {
+  .similar {
+    padding-top: 70px;
+  }
+}
+
+@media(min-width: $mediaDescTop) {
+  .similar {
+    padding-top: 82px;
+  }
+}

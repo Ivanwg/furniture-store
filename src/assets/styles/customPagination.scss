@@ -1,0 +1,58 @@
+.pagination {
+  &__btns-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 32px;
+  }
+  &__btn {
+    padding: 6px 9px;
+    border: 2px solid $mainPurple !important;
+    border-radius: 10px;
+    @include fontProperties(16px, $mainPurple, 100%, 600);
+    text-align: center;
+    @include InputTransition;
+    @include textBgcFocus($mainBGC, $purpleHover);
+    @include borderBgcColorTextActive($purpleShade, $purpleShade, $mainBGC);
+
+    &_active {
+    }
+
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+}
+
+
+
+@media(min-width: $media768) {
+
+
+}
+
+@media(min-width: $media1024) {
+  .pagination {
+    &__btns-wrap {
+
+    }
+    &__btn {
+      @include bgcColorTextHover($mainPurple, $mainBGC);
+      @include borderBgcColorTextActive($purpleShade, $purpleShade, $mainBGC);
+    }
+  }
+}
+
+@media(min-width: $mediaDescTop) {
+
+}
+
+.pagination {
+  &__btn {
+    &_active {
+      border-color: $purpleShade !important;
+      color: $mainBGC !important;
+      background-color: $purpleShade !important;
+    }
+  }
+}
